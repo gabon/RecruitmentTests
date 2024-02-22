@@ -103,7 +103,7 @@ public class DiamondTests
         // Assert
         Assert.Throws<ArgumentException>(act);
     }
-    
+
     [Fact]
     public void Generate_NullLetter_ThrowsArgumentNullException()
     {
@@ -115,13 +115,23 @@ public class DiamondTests
         // Assert
         Assert.Throws<ArgumentNullException>(act);
     }
-    
 }
 
 public class Diamond
 {
     public static char[,] Generate(char letter)
     {
+        if (letter == default)
+        {
+            throw new ArgumentNullException(nameof(letter));
+        }
+
+        if (letter is < 'A' or > 'Z')
+        {
+            //Throw an exception with list of valid letters
+            throw new ArgumentException("Invalid letter. Please use capital a letter between A and Z.");
+        }
+
         int letterIndex = letter - 'A' + 1;
         int lines = letterIndex * 2 - 1;
         int columns = letterIndex * 2 - 1;
