@@ -103,11 +103,20 @@ public class Diamond
             {
                 matrix[line,
                     column] = ' ';
-                if (column == letterIndex - line - 1 ||
+                if ((line < letterIndex && column == letterIndex - line - 1) ||
                     column == letterIndex + line - 1)
                 {
                     matrix[line,
                         column] = (char)('A' + line);
+                }
+                else
+                {
+                    if (column == line - letterIndex + 1 ||
+                        column == columns - line + letterIndex - 2)
+                    {
+                        matrix[line,
+                            column] = (char)('A' + lines - line - 1);
+                    }
                 }
             }
         }
