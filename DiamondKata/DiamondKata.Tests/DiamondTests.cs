@@ -25,8 +25,8 @@ public class DiamondTests
             'B', new[,]
             {
                 { ' ', 'A', ' ' },
-                { 'B', ' ', 'B' }
-                // { ' ', 'A', ' ' }
+                { 'B', ' ', 'B' },
+                { ' ', 'A', ' ' }
             }
         };
         yield return new object[]
@@ -35,10 +35,10 @@ public class DiamondTests
             new[,]
             {
                 { ' ', ' ', 'A', ' ', ' ' },
-                { ' ', 'B', ' ', 'B', ' ' }
-                // { 'C', ' ', ' ', ' ', 'C' },
-                // { ' ', 'B', ' ', 'B', ' ' },
-                // { ' ', ' ', 'A', ' ', ' ' }
+                { ' ', 'B', ' ', 'B', ' ' },
+                { 'C', ' ', ' ', ' ', 'C' },
+                { ' ', 'B', ' ', 'B', ' ' },
+                { ' ', ' ', 'A', ' ', ' ' }
             }
         };
     }
@@ -92,7 +92,8 @@ public class Diamond
     public static char[,] Generate(char letter)
     {
         int letterIndex = letter - 'A' + 1;
-        int lines = letter == 'A' ? 1 : 2; //letterIndex * 2 - 1;
+        int lines = Math.Min(letterIndex,
+            3); //letterIndex * 2 - 1;
         int columns = letterIndex * 2 - 1;
         var matrix = new char[lines, columns];
 
@@ -109,9 +110,6 @@ public class Diamond
                     matrix[line,
                         column] = (char)('A' + line);
                 }
-
-                //middle
-                //second half
             }
         }
 
