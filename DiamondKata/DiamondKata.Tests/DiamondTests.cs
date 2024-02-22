@@ -92,54 +92,29 @@ public class Diamond
     public static char[,] Generate(char letter)
     {
         int letterIndex = letter - 'A' + 1;
-        var lines = letter=='A'?1:2; // letterIndex * 2 - 1;
+        int lines = letter == 'A' ? 1 : 2; //letterIndex * 2 - 1;
         int columns = letterIndex * 2 - 1;
         var matrix = new char[lines, columns];
 
-        //first line of the diamond
+
         for (var line = 0; line < lines; line++)
         {
             for (var column = 0; column < columns; column++)
             {
                 matrix[line,
                     column] = ' ';
+                if (column == letterIndex - line - 1 ||
+                    column == letterIndex + line - 1)
+                {
+                    matrix[line,
+                        column] = (char)('A' + line);
+                }
+
+                //middle
+                //second half
             }
         }
 
-        matrix[0,
-            letterIndex - 1] = 'A';
-
-
         return matrix;
-        //first half of the diamond
-        //second half of the diamond
-        if (letter == 'A')
-        {
-            return new[,] { { 'A' } };
-        }
-
-        if (letter == 'B')
-        {
-            return new[,]
-            {
-                { ' ', 'A', ' ' },
-                { 'B', ' ', 'B' },
-                { ' ', 'A', ' ' }
-            };
-        }
-
-        if (letter == 'C')
-        {
-            return new[,]
-            {
-                { ' ', ' ', 'A', ' ', ' ' },
-                { ' ', 'B', ' ', 'B', ' ' },
-                { 'C', ' ', ' ', ' ', 'C' },
-                { ' ', 'B', ' ', 'B', ' ' },
-                { ' ', ' ', 'A', ' ', ' ' }
-            };
-        }
-
-        throw new NotImplementedException();
     }
 }
