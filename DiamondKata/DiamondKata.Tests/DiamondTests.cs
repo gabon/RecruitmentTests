@@ -52,34 +52,52 @@ public class DiamondTests
         char[,] result = Diamond.Generate(letter);
 
         // Assert
-        _output.WriteLine($"Result:{Environment.NewLine}{result.ToMultilineString()}");
+        _output.WriteLine($"Result:{Environment.NewLine}{result.ToMultilineString('_')}");
         Assert.Equal(expected,
             result);
     }
+    
+    [Theory]
+    [MemberData(nameof(DiamondTestData))]
+    public void Generate_GivenLetter_MatrixWithCorrectSize(char letter, char[,] expected)
+    {
+        // Act
+        char[,] result = Diamond.Generate(letter);
+
+        // Assert
+        Assert.Equal(expected.GetLength(0), result.GetLength(0));
+        Assert.Equal(expected.GetLength(1), result.GetLength(1));
+    }
+   
 }
 
 public class Diamond
 {
     public static char[,] Generate(char letter)
     {
+        
+        //calculate the size of the diamond
+        //first line of the diamond
+        //first half of the diamond
+        //second half of the diamond
         if (letter == 'A')
         {
-            return new char[,] { { 'A' } };
+            return new[,] { { 'A' } };
         }
-        
-        if(letter == 'B')
+
+        if (letter == 'B')
         {
-            return new char[,]
+            return new[,]
             {
                 { ' ', 'A', ' ' },
                 { 'B', ' ', 'B' },
                 { ' ', 'A', ' ' }
             };
         }
-        
-        if(letter == 'C')
+
+        if (letter == 'C')
         {
-            return new char[,]
+            return new[,]
             {
                 { ' ', ' ', 'A', ' ', ' ' },
                 { ' ', 'B', ' ', 'B', ' ' },

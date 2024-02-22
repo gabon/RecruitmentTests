@@ -57,4 +57,12 @@ public class MatrixExtensionTests
         Assert.Equal($"ABC{Environment.NewLine}DEF{Environment.NewLine}GHI",
             matrix.ToMultilineString());
     }
+    
+    [Fact]
+    public void ToMultilineString_ReplacesSpaceWithUnderscore()
+    {
+        var matrix = new[,] { { ' ' } };
+        Assert.Equal("_",
+            matrix.ToMultilineString('_'));
+    }
 }
