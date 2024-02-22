@@ -1,3 +1,5 @@
+using System.Text;
+
 namespace DiamondKata.Tests;
 
 public class DiamondTests
@@ -16,23 +18,45 @@ public class MatrixExtensionTests
     public void ToMultilineString_OneLetter_OneLetter()
     {
         var matrix = new[,] { { 'A' } };
-        Assert.Equal("A", matrix.ToString());
+        Assert.Equal("A",
+            matrix.ToMultilineString());
     }
-    
+
     [Fact]
     public void ToMultilineString_TwoOnOne_ConcatenatedOneLine()
     {
         var matrix = new[,] { { 'A', 'B' } };
-        Assert.Equal("A B", matrix.ToString());
+        Assert.Equal("A B",
+            matrix.ToMultilineString());
     }
-    
+
     [Fact]
     public void ToMultilineString_TwoOnTwo_ConcatenatedTwoLines()
     {
         var matrix = new[,] { { 'A', 'B' }, { 'C', 'D' } };
-        Assert.Equal("A B\nC D", matrix.ToString());
+        Assert.Equal("A B\nC D",
+            matrix.ToMultilineString());
     }
- 
+}
+
+public static class MatrixExtension
+{
+    public static string ToMultilineString(this char[,] matrix)
+    {
+        var sb = new StringBuilder();
+
+        for (var i = 0; i < matrix.GetLength(0); i++)
+        {
+            sb.Append(matrix[i,
+                0]);
+            if (i < matrix.GetLength(0) - 1)
+            {
+                sb.Append(' ');
+            }
+        }
+
+        return sb.ToString();
+    }
 }
 
 public class Diamond
