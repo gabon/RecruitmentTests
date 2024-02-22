@@ -6,6 +6,11 @@ public static class MatrixExtension
 {
     public static string ToMultilineString(this char[,] matrix)
     {
+        if (matrix == null)
+        {
+            throw new ArgumentNullException(nameof(matrix));
+        }
+
         var sb = new StringBuilder();
 //todo: check if this can be converted to a foreach or linq or something more readable
         for (var i = 0; i < matrix.GetLength(0); i++)

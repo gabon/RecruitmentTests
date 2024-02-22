@@ -14,7 +14,7 @@ public class MatrixExtensionTests
     public void ToMultilineString_OneEmptyString_OneEmptyString()
     {
         var matrix = new[,] { { ' ' } };
-        Assert.Equal("",
+        Assert.Equal(" ",
             matrix.ToMultilineString());
     }
 
@@ -22,7 +22,7 @@ public class MatrixExtensionTests
     public void ToMultilineString_Null_ThrowsArgumentException()
     {
         char[,] matrix = null!;
-        Assert.Throws<ArgumentException>(() => matrix.ToMultilineString());
+        Assert.Throws<ArgumentNullException>(() => matrix.ToMultilineString());
     }
 
 
