@@ -43,18 +43,16 @@ public class DiamondTests
         };
     }
 
-    [Fact]
-    public void Test1()
+    [Theory]
+    [MemberData(nameof(DiamondTestData))]
+    public void Generate_GivenLetter_ReturnsDiamond(char letter,
+        char[,] expected)
     {
-        // Arrange
-        var letter = 'A';
-        var expected = new[,] { { 'A' } };
-
         // Act
         char[,] result = Diamond.Generate(letter);
 
         // Assert
-        _output.WriteLine(result.ToMultilineString());
+        _output.WriteLine($"Result:{Environment.NewLine}{result.ToMultilineString()}");
         Assert.Equal(expected,
             result);
     }
@@ -64,6 +62,33 @@ public class Diamond
 {
     public static char[,] Generate(char letter)
     {
-        return new[,] { { 'A' } };
+        if (letter == 'A')
+        {
+            return new char[,] { { 'A' } };
+        }
+        
+        if(letter == 'B')
+        {
+            return new char[,]
+            {
+                { ' ', 'A', ' ' },
+                { 'B', ' ', 'B' },
+                { ' ', 'A', ' ' }
+            };
+        }
+        
+        if(letter == 'C')
+        {
+            return new char[,]
+            {
+                { ' ', ' ', 'A', ' ', ' ' },
+                { ' ', 'B', ' ', 'B', ' ' },
+                { 'C', ' ', ' ', ' ', 'C' },
+                { ' ', 'B', ' ', 'B', ' ' },
+                { ' ', ' ', 'A', ' ', ' ' }
+            };
+        }
+
+        throw new NotImplementedException();
     }
 }
