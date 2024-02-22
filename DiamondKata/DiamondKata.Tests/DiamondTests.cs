@@ -68,6 +68,19 @@ public class DiamondTests
         Assert.Equal(expected.GetLength(0), result.GetLength(0));
         Assert.Equal(expected.GetLength(1), result.GetLength(1));
     }
+    
+    [Fact]
+    public void Generate_InvalidLetter_ThrowsArgumentException()
+    {
+        // Arrange
+        char letter = '0';
+
+        // Act
+        Action act = () => Diamond.Generate(letter);
+
+        // Assert
+        Assert.Throws<ArgumentException>(act);
+    }
    
 }
 
@@ -77,7 +90,14 @@ public class Diamond
     {
         
         //calculate the size of the diamond
+        
+        var size = letter - 'A' + 1;
+        var lines = size * 2 - 1;
+        var columns = size * 2 - 1;
+        var matrix = new char[lines, columns];
+        
         //first line of the diamond
+        return matrix;
         //first half of the diamond
         //second half of the diamond
         if (letter == 'A')
