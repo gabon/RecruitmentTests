@@ -23,8 +23,18 @@ public static class MatrixExtension
         {
             for (var j = 0; j < matrix.GetLength(1); j++)
             {
-                sb.Append(matrix[i,
-                    j]);
+                if (spaceReplacement is not null &&
+                    matrix[i,
+                        j] ==
+                    ' ')
+                {
+                    sb.Append(spaceReplacement);
+                }
+                else
+                {
+                    sb.Append(matrix[i,
+                        j]);
+                }
             }
 
             if (i < matrix.GetLength(0) - 1)
