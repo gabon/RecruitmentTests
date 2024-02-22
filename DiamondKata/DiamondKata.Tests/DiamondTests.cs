@@ -92,8 +92,7 @@ public class Diamond
     public static char[,] Generate(char letter)
     {
         int letterIndex = letter - 'A' + 1;
-        int lines = Math.Min(letterIndex,
-            3); //letterIndex * 2 - 1;
+        int lines = letterIndex * 2 - 1;
         int columns = letterIndex * 2 - 1;
         var matrix = new char[lines, columns];
 
