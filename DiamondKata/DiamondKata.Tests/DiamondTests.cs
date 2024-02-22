@@ -26,7 +26,7 @@ public class MatrixExtensionTests
     public void ToMultilineString_TwoOnOne_ConcatenatedOneLine()
     {
         var matrix = new[,] { { 'A', 'B' } };
-        Assert.Equal("A B",
+        Assert.Equal("AB",
             matrix.ToMultilineString());
     }
 
@@ -34,7 +34,15 @@ public class MatrixExtensionTests
     public void ToMultilineString_TwoOnTwo_ConcatenatedTwoLines()
     {
         var matrix = new[,] { { 'A', 'B' }, { 'C', 'D' } };
-        Assert.Equal("A B\nC D",
+        Assert.Equal($"AB{Environment.NewLine}CD",
+            matrix.ToMultilineString());
+    }
+    
+    [Fact]
+    public void ToMultilineString_ThreeOnThree_ConcatenatedThreeLines()
+    {
+        var matrix = new[,] { { 'A', 'B', 'C' }, { 'D', 'E', 'F' }, { 'G', 'H', 'I' } };
+        Assert.Equal($"ABC{Environment.NewLine}DEF{Environment.NewLine}GHI",
             matrix.ToMultilineString());
     }
 }
@@ -55,6 +63,11 @@ public static class MatrixExtension
                 {
                     sb.Append(' ');
                 }
+            }
+
+            if (i < matrix.GetLength(0) - 1)
+            {
+                sb.Append(Environment.NewLine);
             }
         }
 

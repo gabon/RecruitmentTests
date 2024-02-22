@@ -76,6 +76,7 @@
 	<s:String x:Key="/Default/CodeStyle/TypeScriptCodeStyle/TypeSpecification/@EntryValue">ExplicitAlways</s:String>
 	<s:String x:Key="/Default/CustomTools/CustomToolsData/@EntryValue"></s:String>
 	<s:String x:Key="/Default/Environment/ContinuousTesting/TriggerMode/@EntryValue">OnBuild</s:String>
+	<s:Boolean x:Key="/Default/Environment/ContinuousTesting/TriggerOnSave/@EntryValue">True</s:Boolean>
 	<s:Boolean x:Key="/Default/Environment/Filtering/HideAutoProperties/@EntryValue">True</s:Boolean>
 	<s:Boolean x:Key="/Default/Environment/InjectedLayers/FileInjectedLayer/=E6875C37E9A94846B378F17F49C7D14A/@KeyIndexDefined">True</s:Boolean>
 	<s:String x:Key="/Default/Environment/InjectedLayers/FileInjectedLayer/=E6875C37E9A94846B378F17F49C7D14A/AbsolutePath/@EntryValue">C:\Sources\hr-personaladdendum\src\app\Hr.EmployeeTargets.sln.DotSettings</s:String>
