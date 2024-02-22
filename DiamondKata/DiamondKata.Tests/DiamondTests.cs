@@ -47,11 +47,14 @@ public static class MatrixExtension
 
         for (var i = 0; i < matrix.GetLength(0); i++)
         {
-            sb.Append(matrix[i,
-                0]);
-            if (i < matrix.GetLength(0) - 1)
+            for (var j = 0; j < matrix.GetLength(1); j++)
             {
-                sb.Append(' ');
+                sb.Append(matrix[i,
+                    j]);
+                if (j < matrix.GetLength(1) - 1)
+                {
+                    sb.Append(' ');
+                }
             }
         }
 
