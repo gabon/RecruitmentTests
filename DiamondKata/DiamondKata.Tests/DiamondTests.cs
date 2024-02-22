@@ -24,8 +24,8 @@ public class DiamondTests
         {
             'B', new[,]
             {
-                { ' ', 'A', ' ' }
-                // { 'B', ' ', 'B' },
+                { ' ', 'A', ' ' },
+                { 'B', ' ', 'B' }
                 // { ' ', 'A', ' ' }
             }
         };
@@ -34,8 +34,8 @@ public class DiamondTests
             'C',
             new[,]
             {
-                { ' ', ' ', 'A', ' ', ' ' }
-                // { ' ', 'B', ' ', 'B', ' ' },
+                { ' ', ' ', 'A', ' ', ' ' },
+                { ' ', 'B', ' ', 'B', ' ' }
                 // { 'C', ' ', ' ', ' ', 'C' },
                 // { ' ', 'B', ' ', 'B', ' ' },
                 // { ' ', ' ', 'A', ' ', ' ' }
@@ -92,7 +92,7 @@ public class Diamond
     public static char[,] Generate(char letter)
     {
         int letterIndex = letter - 'A' + 1;
-        var lines = 1; // letterIndex * 2 - 1;
+        var lines = letter=='A'?1:2; // letterIndex * 2 - 1;
         int columns = letterIndex * 2 - 1;
         var matrix = new char[lines, columns];
 
