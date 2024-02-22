@@ -87,11 +87,15 @@ public class DiamondTests
             result.GetLength(1));
     }
 
-    [Fact]
-    public void Generate_InvalidLetter_ThrowsArgumentException()
+    [Theory]
+    [InlineData('a')]
+    [InlineData('z')]
+    [InlineData('1')]
+    [InlineData(' ')]
+    [InlineData('!')]
+    public void Generate_InvalidLetter_ThrowsArgumentException(char letter)
     {
         // Arrange
-        var letter = '0';
 
         // Act
         Action act = () => Diamond.Generate(letter);
@@ -99,6 +103,19 @@ public class DiamondTests
         // Assert
         Assert.Throws<ArgumentException>(act);
     }
+    
+    [Fact]
+    public void Generate_NullLetter_ThrowsArgumentNullException()
+    {
+        // Arrange
+
+        // Act
+        Action act = () => Diamond.Generate(default);
+
+        // Assert
+        Assert.Throws<ArgumentNullException>(act);
+    }
+    
 }
 
 public class Diamond
@@ -115,22 +132,22 @@ public class Diamond
         {
             for (var column = 0; column < columns; column++)
             {
-                matrix[line,
-                    column] = ' ';
                 if ((line < letterIndex && column == letterIndex - line - 1) ||
                     column == letterIndex + line - 1)
                 {
                     matrix[line,
                         column] = (char)('A' + line);
                 }
+                else if (column == line - letterIndex + 1 ||
+                         column == columns - line + letterIndex - 2)
+                {
+                    matrix[line,
+                        column] = (char)('A' + lines - line - 1);
+                }
                 else
                 {
-                    if (column == line - letterIndex + 1 ||
-                        column == columns - line + letterIndex - 2)
-                    {
-                        matrix[line,
-                            column] = (char)('A' + lines - line - 1);
-                    }
+                    matrix[line,
+                        column] = ' ';
                 }
             }
         }
