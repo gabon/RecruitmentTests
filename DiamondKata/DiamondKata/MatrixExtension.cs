@@ -7,7 +7,7 @@ public static class MatrixExtension
     public static string ToMultilineString(this char[,] matrix)
     {
         var sb = new StringBuilder();
-
+//todo: check if this can be converted to a foreach or linq or something more readable
         for (var i = 0; i < matrix.GetLength(0); i++)
         {
             for (var j = 0; j < matrix.GetLength(1); j++)

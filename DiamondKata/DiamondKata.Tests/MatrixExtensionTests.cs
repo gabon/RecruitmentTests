@@ -1,8 +1,31 @@
-
 namespace DiamondKata.Tests;
 
 public class MatrixExtensionTests
 {
+    [Fact]
+    public void ToMultilineString_Empty_Empty()
+    {
+        var matrix = new char[,] { };
+        Assert.Equal("",
+            matrix.ToMultilineString());
+    }
+
+    [Fact]
+    public void ToMultilineString_OneEmptyString_OneEmptyString()
+    {
+        var matrix = new[,] { { ' ' } };
+        Assert.Equal("",
+            matrix.ToMultilineString());
+    }
+
+    [Fact]
+    public void ToMultilineString_Null_ThrowsArgumentException()
+    {
+        char[,] matrix = null!;
+        Assert.Throws<ArgumentException>(() => matrix.ToMultilineString());
+    }
+
+
     [Fact]
     public void ToMultilineString_OneLetter_OneLetter()
     {
